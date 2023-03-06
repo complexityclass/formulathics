@@ -1,0 +1,14 @@
+[workspace]
+members = ["shared", "shared_types"]
+
+[workspace.package]
+authors = ["complexityclass"]
+edition = "2021"
+repository = "https://github.com/complexityclass/formulathics"
+license = "Apache-2.0"
+keywords = []
+rust-version = "1.66"
+
+[workspace.dependencies]
+anyhow = "1.0.69"
+serde = "1.0.152"
