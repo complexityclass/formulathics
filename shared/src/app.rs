@@ -37,8 +37,8 @@ impl crux_core::App for App {
 
     fn update(&self, event: Self::Event, model: &mut Self::Model, caps: &Self::Capabilities) {
         match event {
-            Event::Increment => model.count += 1,
-            Event::Decrement => model.count -= 1,
+            Event::Increment => model.count += 2,
+            Event::Decrement => model.count -= 2,
             Event::Reset => model.count = 0,
         };
 
