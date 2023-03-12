@@ -8,35 +8,6 @@
 import Serde
 import SwiftUI
 
-enum Message {
-    case message(Event)
-}
-
-@MainActor
-class Model: ObservableObject {
-    @Published var view = ViewModel(count: "")
-    
-    init() {
-        update(msg: .message(.reset))
-    }
-    
-    func update(msg: Message) {
-        let requests: [Request]
-        switch msg {
-        case let .message(m):
-            requests = try! [Request].bcsDeserialize(input: iOS.processEvent(try! m.bcsSerialize()))
-        }
-        
-        for req in requests {
-            switch req.effect {
-            case .render(_):
-                view = try! ViewModel.bcsDeserialize(input: iOS.view())
-            }
-        }
-        
-    }
-}
-
 struct ActionButton: View {
     var label: String
     var color: Color
@@ -64,19 +35,34 @@ struct ActionButton: View {
 
 struct ContentView: View {
     @ObservedObject var model: Model
+    @State private var input = ""
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text(model.view.count)
+            Text(model.view.spent).foregroundColor(.cyan)
+            AsyncImage(url: URL(string: model.view.img_url)!) { image in
+                image
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300)
+            } placeholder: {
+                Color.green
+            }
+            TextField("Add some context...", text: $input)
+                .padding()
+                .font(.system(size: 20))
+                .cornerRadius(10)
+                .padding()
+            Text(model.view.answer)
             HStack {
-                ActionButton(label: "Inc", color: .green) {
-                    model.update(msg: .message(.increment))
+                ActionButton(label: "Write!", color: .green) {
+                    guard input.count > 10 else { return }
+                    model.update(msg: .message(.ask(input)))
                 }
-                ActionButton(label: "Dec", color: .red) {
-                    model.update(msg: .message(.decrement))
+                Text("🤖")
+                ActionButton(label: "Draw!", color: .purple) {
+                    guard input.count > 10 else { return }
+                    model.update(msg: .message(.gen(input)))
                 }
             }
         }

@@ -16,6 +16,7 @@
 		7459D2A129BCE0AD00604635 /* libshared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7459D2A029BCE0AD00604635 /* libshared.a */; };
 		7459D2A429BCE11600604635 /* Serde in Frameworks */ = {isa = PBXBuildFile; productRef = 7459D2A329BCE11600604635 /* Serde */; };
 		7459D2A629BCE94100604635 /* shared_types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7459D2A529BCE94100604635 /* shared_types.swift */; };
+		7459D2A829BD1E8800604635 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7459D2A729BD1E8800604635 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -46,6 +47,7 @@
 		7459D29C29BCDDA800604635 /* rust_build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = rust_build.sh; sourceTree = "<group>"; };
 		7459D2A029BCE0AD00604635 /* libshared.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libshared.a; path = ../target/debug/libshared.a; sourceTree = "<group>"; };
 		7459D2A529BCE94100604635 /* shared_types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shared_types.swift; path = ../shared_types/generated/swift/shared_types.swift; sourceTree = "<group>"; };
+		7459D2A729BD1E8800604635 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				7459D28C29BCD82C00604635 /* ContentView.swift */,
 				7459D28E29BCD82D00604635 /* Assets.xcassets */,
 				7459D29029BCD82D00604635 /* Preview Content */,
+				7459D2A729BD1E8800604635 /* Model.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7459D2A829BD1E8800604635 /* Model.swift in Sources */,
 				7459D2A629BCE94100604635 /* shared_types.swift in Sources */,
 				7459D29A29BCD9AB00604635 /* shared.udl in Sources */,
 				7459D28D29BCD82C00604635 /* ContentView.swift in Sources */,
